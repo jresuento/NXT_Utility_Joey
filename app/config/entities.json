@@ -1,0 +1,19 @@
+{
+	"EntityTypes" : [
+		"Account",
+		"Ad",
+		"AdEvent",
+		"Advertiser",
+		"Brand",
+		"Campaign",
+		"DeliveryGroup",
+		"InStreamTemplate",
+		"Placement",
+		"PlacementPackage",
+		"Site",
+		"Strategy",
+		"StrategyV2",
+		"TargetAudience",
+		"User"
+	]
+}

@@ -1,0 +1,55 @@
+<div class='history-form-view'>
+	<form class='form-horizontal' ng-submit='$ctrl.submit()''>
+		<div class='form-group'>
+			<label for='authorization'  class='col-sm-1 control-label'>Authorization</label>
+			<div class='col-sm-3'>
+				<input type='text' class='form-control' id='authorization' placeholder='Authorization' ng-model='$ctrl.authorization'>
+			</div>
+		</div>
+		<div class='form-group'>
+			<label for='entitytype' class='col-sm-1 control-label'>EntityType</label>
+			<div class='col-sm-3'>
+				<select ng-options='entityType for entityType in $ctrl.entitiesTypes.EntityTypes track by entityType' ng-model='$ctrl.entityType' class='form-control' id='entitytype'></select>
+			</div>
+		</div>
+		<div class='form-group'>
+			<label for='entityid' class='col-sm-1 control-label'>EntityID</label>
+			<div class='col-sm-3'>
+				<input type='text' class='form-control' id='entityid' placeholder='EntityID'  ng-model='$ctrl.entityID'>
+			</div>
+		</div>
+		<div class='form-group'>
+			<div class='col-sm-offset-1 col-sm-3'>
+				<button type='submit' class='btn btn-default'>Submit</button>
+			 </div>
+		</div>
+	</form>
+</div>
+
+<div class='history-table-view'>
+	<div class="row">
+		<div class="col-md-1">Date Time</div>
+		<div class="col-md-1">EntityType</div>
+		<div class="col-md-1">EntityID</div>
+		<div class="col-md-2">Action</div>
+		<div class="col-md-4">Performed By</div>
+		<div class="col-md-1">More</div>
+	</div>
+	<div class="row" ng-repeat="history in $ctrl.entityHistory.result">		
+		<div class="col-md-1">{{history.changedDate}}</div>
+		<div class="col-md-1">{{history.typeOfEntity}}</div>
+		<div class="col-md-1">{{history.entityId}}</div>
+		<div class="col-md-2">{{history.operationType}}</div>
+		<div class="col-md-4">{{ $ctrl.utils.format('{0} ({1}) | {2} ({3})', history.changerUserName, history.changerUserId, history.changerAccountName, history.changerAccountId)  }}</div>
+		<!--<div class="col-md-1"><a class='history-details-button' ng-click='$ctrl.showLogDetails()'>Details</a></div>-->
+		<div class="col-md-1"><a class='history-details-button' ng-click='$ctrl.selectedHistoryID = history.id; $ctrl.showLogDetails()'>Details</a></div>
+	</div>
+
+</div>
+
+<div ng-show='$ctrl.isShowLogDetails' class='ng-hide history-modal'></div>
+
+<div ng-show='$ctrl.isShowLogDetails' class='ng-hide history-modal-dimmer'></div>
+
+
+

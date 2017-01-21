@@ -1,0 +1,46 @@
+/* */
+
+/* home */
+
+/* history */
+
+div.history-table-view {
+	margin:40px;
+}
+
+div.history-table-view > div.row > div {
+	border: .5px solid black;
+}
+
+div.history-table-view div.row:first-child {
+	font-weight:bold;
+}
+
+div.history-modal{
+	position:absolute;
+	z-index:2;
+	height:400px;
+	width:800px;
+	top:50%;
+	left:50%;
+	margin-left:-400px;
+	margin-top:-200px;
+	border:1px solid red;
+	background-color:#fff;
+	overflow:auto;
+}
+
+div.history-modal-dimmer{
+	position:absolute;
+	z-index:1;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	background-color:grey;
+	opacity:.5;	
+}
+
+.history-details-button {
+	cursor:pointer;
+}
