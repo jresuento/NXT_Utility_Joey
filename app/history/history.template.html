@@ -41,14 +41,16 @@
 		<div class="col-md-1">{{history.entityId}}</div>
 		<div class="col-md-2">{{history.operationType}}</div>
 		<div class="col-md-4">{{ $ctrl.utils.format('{0} ({1}) | {2} ({3})', history.changerUserName, history.changerUserId, history.changerAccountName, history.changerAccountId)  }}</div>
-		<!--<div class="col-md-1"><a class='history-details-button' ng-click='$ctrl.showLogDetails()'>Details</a></div>-->
 		<div class="col-md-1"><a class='history-details-button' ng-click='$ctrl.selectedHistoryID = history.id; $ctrl.showLogDetails()'>Details</a></div>
 	</div>
 
 </div>
 
-<div ng-show='$ctrl.isShowLogDetails' class='ng-hide history-modal'></div>
-
+<div ng-show='$ctrl.isShowLogDetails' class='ng-hide history-modal'>
+	<pre>
+		<span ng-bind='$ctrl.selectedHistoryDetails'></span>
+	</pre>
+</div>
 <div ng-show='$ctrl.isShowLogDetails' class='ng-hide history-modal-dimmer'></div>
 
 

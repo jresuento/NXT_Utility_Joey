@@ -10,15 +10,18 @@ component('historyView', {
 			var self = this;
 
 			self.utils = utils;
-
 			self.entitiesTypes = ($resource('config/entities.json')).get();
-
 			self.isShowLogDetails = false;
-
 			self.selectedHistoryID = null;
+			self.selectedHistoryDetails = {};
 
 			self.showLogDetails = function(){
-				//console.log('self.selectedHistoryID', self.selectedHistoryID)		
+				//console.log('self.selectedHistoryID', self.selectedHistoryID)
+
+				angular.forEach(self.entityHistory.result, function(value) {
+					if(value.id == self.selectedHistoryID) console.log('entityhistory', value);
+				});
+
 				self.isShowLogDetails = true
 			}
 
@@ -32,9 +35,7 @@ component('historyView', {
 						isArray: false
 					}					
 				})).getHistory({}, function(){});				
-			}
-
-			
+			}			
 
 			//testing only
 				self.authorization = '9fc57cfc-24ed-4ac3-b823-bc9fb215a7a1';
