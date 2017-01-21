@@ -1,2 +1,2 @@
 # NXT_Utility_Joey
-utility tools for NXT platform.
+Personal utility tools for NXT platform.
