@@ -28,7 +28,11 @@ component('historyView', {
 				self.property_change_table += '<div class=\'col-md-3\'>Old Value</div>';
 				self.property_change_table += '</div>';
 
-				angular.forEach(self.selectedHistoryDetails.originJsonValue.propertyChange.propertyChanges, function(v) {
+				if(typeof self.selectedHistoryDetails.originJsonValue.propertyChange === 'undefined'){
+					self.property_change_table += '<div class=\'row\'>';
+					self.property_change_table += '<div class=\'col-md-12\'>No property changes to show.</div>';
+					self.property_change_table += '</div>';
+				} else angular.forEach(self.selectedHistoryDetails.originJsonValue.propertyChange.propertyChanges, function(v) {
 					
 					if(typeof v.propertyChanges != 'object'){
 						self.property_change_table += '<div class=\'row\'>';

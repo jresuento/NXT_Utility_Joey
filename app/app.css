@@ -28,7 +28,7 @@ div.history-modal{
 	margin-top:-200px;
 	border:1px solid #3498DB;
 	background-color:#fff;
-	overflow:auto;
+	overflow:none;
 	font-size:12px;
 }
 
@@ -78,6 +78,8 @@ div.history-modal-close:hover{
 div.property-change-table{
 	/*margin-top: 10px;*/
 	padding: 20px 15px;
+	overflow-y: scroll;
+	height: 300px;
 }
 
 div.property-change-table div.row div{
