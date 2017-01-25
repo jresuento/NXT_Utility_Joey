@@ -68,7 +68,8 @@ component('historyView', {
 						},
 						isArray: false
 					}					
-				})).getHistory({}, function(){					
+				})).getHistory({}, function(){
+					self.entityHistoryResult = new Array;
 					angular.forEach(self.__entityHistory.result, function(v){
 						self.entityHistoryResult.push({
 							'id' : v.id,
