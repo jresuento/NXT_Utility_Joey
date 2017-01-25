@@ -85,13 +85,7 @@ component('historyView', {
 						});
 					});
 				});				
-			}			
-
-			//testing only
-				self.authorization = 'adb31a8f-f8e3-40de-b8e5-7f5e389d5d5e';
-				self.entityType = 'Ad';
-				self.entityID = '1074133259';
-			//
+			}
 		}
 	]
 });
