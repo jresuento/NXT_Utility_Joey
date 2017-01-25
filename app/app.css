@@ -5,7 +5,8 @@
 /* history */
 
 div.history-table-view {
-	margin:40px;
+	margin:20px;
+	font-size:12px;
 }
 
 div.history-table-view > div.row > div {
@@ -25,9 +26,10 @@ div.history-modal{
 	left:50%;
 	margin-left:-400px;
 	margin-top:-200px;
-	border:1px solid blue;
+	border:1px solid #3498DB;
 	background-color:#fff;
 	overflow:auto;
+	font-size:12px;
 }
 
 div.history-modal-dimmer{
@@ -41,6 +43,53 @@ div.history-modal-dimmer{
 	opacity:.5;	
 }
 
-.history-details-button {
+a.history-details-button {
 	cursor:pointer;
 }
+
+div.history-modal{
+	border-radius: 4px;
+	font-family: Tahoma, Arial;
+	font-weight: 12px;
+}
+
+div.history-modal-header {	
+	font-size: 17px;
+	font-weight: bold;
+	background-color: #3498DB;
+	padding: 5px;
+	color: #fff;
+}
+
+div.history-modal div.row {
+	margin: 0;
+	padding:0;
+}
+
+div.history-modal-close{
+	text-align: right;
+}
+
+div.history-modal-close:hover{
+	cursor:pointer;
+	color:#999;
+}
+
+div.property-change-table{
+	/*margin-top: 10px;*/
+	padding: 20px 15px;
+}
+
+div.property-change-table div.row div{
+	border: .5px solid #3498DB;
+	height: 25px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.property-change-table-row-header{
+	font-weight:bold;
+}
+
+
+

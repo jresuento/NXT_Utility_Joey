@@ -28,28 +28,46 @@
 
 <div class='history-table-view'>
 	<div class="row">
-		<div class="col-md-1">Date Time</div>
+		<div class="col-md-2">Date Time</div>
 		<div class="col-md-1">EntityType</div>
 		<div class="col-md-1">EntityID</div>
 		<div class="col-md-2">Action</div>
 		<div class="col-md-4">Performed By</div>
 		<div class="col-md-1">More</div>
 	</div>
-	<div class="row" ng-repeat="history in $ctrl.entityHistory.result">		
-		<div class="col-md-1">{{history.changedDate}}</div>
-		<div class="col-md-1">{{history.typeOfEntity}}</div>
-		<div class="col-md-1">{{history.entityId}}</div>
-		<div class="col-md-2">{{history.operationType}}</div>
-		<div class="col-md-4">{{ $ctrl.utils.format('{0} ({1}) | {2} ({3})', history.changerUserName, history.changerUserId, history.changerAccountName, history.changerAccountId)  }}</div>
+	<div class="row" ng-repeat="history in $ctrl.entityHistoryResult">		
+		<div class="col-md-2" title='{{history.changedDate}}'>{{history.changedDate}}</div>
+		<div class="col-md-1" title='{{history.typeOfEntity}}'>{{history.typeOfEntity}}</div>
+		<div class="col-md-1" title='{{history.entityId}}'>{{history.entityId}}</div>
+		<div class="col-md-2" title='{{history.operationType}}'>{{history.operationType}}</div>
+		<div class="col-md-4" title='{{history.performedBy}}'>{{history.performedBy}}</div>
 		<div class="col-md-1"><a class='history-details-button' ng-click='$ctrl.selectedHistoryID = history.id; $ctrl.showLogDetails()'>Details</a></div>
 	</div>
 
 </div>
 
 <div ng-show='$ctrl.isShowLogDetails' class='ng-hide history-modal'>
-	<pre>
-		<span ng-bind='$ctrl.selectedHistoryDetails'></span>
-	</pre>
+	<div class='history-modal-header'	>
+		<div class='row'>
+			<div class='col-md-11 history-modal-header-label'>
+				<span ng-bind='$ctrl.selectedHistoryDetails.operationType'></span>
+			</div>
+			<div class='col-md-1 history-modal-close' ng-click='$ctrl.hideLogDetails()'>
+				[X]
+			</div>
+		</div>		
+	</div>
+	<div>
+		<div class='row'>
+			<div class="col-md-8">
+				<b>Updated by:</b> {{ $ctrl.selectedHistoryDetails.performedBy }}</span>
+			</div>
+			<div class="col-md-4">
+				<b>Updated on:</b> {{ $ctrl.selectedHistoryDetails.changedDate }}</span>
+			</div>
+		</div>
+	</div>
+	<div class='property-change-table' ng-bind-html='$ctrl.property_change_table'>	</div>
 </div>
 <div ng-show='$ctrl.isShowLogDetails' class='ng-hide history-modal-dimmer'></div>
 

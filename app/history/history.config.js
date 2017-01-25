@@ -8,25 +8,56 @@ component('historyView', {
 		function HistoryController($resource, utils) {
 
 			var self = this;
-
 			self.utils = utils;
 			self.entitiesTypes = ($resource('config/entities.json')).get();
 			self.isShowLogDetails = false;
 			self.selectedHistoryID = null;
 			self.selectedHistoryDetails = {};
+			self.entityHistoryResult = new Array;
 
 			self.showLogDetails = function(){
-				//console.log('self.selectedHistoryID', self.selectedHistoryID)
-
-				angular.forEach(self.entityHistory.result, function(value) {
-					if(value.id == self.selectedHistoryID) console.log('entityhistory', value);
+				angular.forEach(self.entityHistoryResult, function(value) {
+					if(value.id == self.selectedHistoryID) self.selectedHistoryDetails = value;
 				});
 
-				self.isShowLogDetails = true
+				self.isShowLogDetails = true;
+				self.property_change_table = '<div class=\'row property-change-table-row-header\'>';
+				self.property_change_table += '<div class=\'col-md-3\'>ParentField</div>';
+				self.property_change_table += '<div class=\'col-md-3\'>Field</div>';
+				self.property_change_table += '<div class=\'col-md-3\'>New Value</div>';
+				self.property_change_table += '<div class=\'col-md-3\'>Old Value</div>';
+				self.property_change_table += '</div>';
+
+				angular.forEach(self.selectedHistoryDetails.originJsonValue.propertyChange.propertyChanges, function(v) {
+					
+					if(typeof v.propertyChanges != 'object'){
+						self.property_change_table += '<div class=\'row\'>';
+						self.property_change_table += '<div title=\'' + v.parentField + '\' class=\'col-md-3\'>' + v.parentField + '</div>';
+						self.property_change_table += '<div title=\'' + v.field + '\' class=\'col-md-3\'>' + v.field + '</div>';
+						self.property_change_table += '<div title=\'' + v.valueNew + '\' class=\'col-md-3\'>' + v.valueNew + '</div>';
+						self.property_change_table += '<div title=\'' + v.valueOld + '\' class=\'col-md-3\'>' + v.valueOld + '</div>';
+						self.property_change_table += '</div>';
+					} else {
+						angular.forEach(v.propertyChanges, function(vc) {
+							console.log('vc', vc);
+							self.property_change_table += '<div class=\'row\'>';
+							self.property_change_table += '<div title=\'' + vc.parentField + '\' class=\'col-md-3\'>' + vc.parentField + '</div>';
+							self.property_change_table += '<div title=\'' + vc.field + '\' class=\'col-md-3\'>' + vc.field + '</div>';
+							self.property_change_table += '<div title=\'' + vc.valueNew + '\' class=\'col-md-3\'>' + vc.valueNew + '</div>';
+							self.property_change_table += '<div title=\'' + vc.valueOld + '\' class=\'col-md-3\'>' + vc.valueOld + '</div>';
+							self.property_change_table += '</div>';
+						});
+					}
+
+				});
+			}
+
+			self.hideLogDetails = function(){
+				self.isShowLogDetails = false	
 			}
 
 			self.submit = function(){		
-				self.entityHistory = ($resource('https://mdx.sizmek.com/rest/history/entityhistory?id=' + self.entityID + '&type=' + self.entityType + '&sort=changedDate&order=desc', {}, {
+				self.__entityHistory = ($resource('https://mdx.sizmek.com/rest/history/entityhistory?id=' + self.entityID + '&type=' + self.entityType + '&sort=changedDate&order=desc', {}, {
 					getHistory : {
 						'method' : 'GET',
 						'headers' : {
@@ -34,13 +65,29 @@ component('historyView', {
 						},
 						isArray: false
 					}					
-				})).getHistory({}, function(){});				
+				})).getHistory({}, function(){					
+					angular.forEach(self.__entityHistory.result, function(v){
+						self.entityHistoryResult.push({
+							'id' : v.id,
+							'changedDate' : utils.formatToDate(utils, v.changedDate),							
+							'typeOfEntity' : v.typeOfEntity,
+							'entityId' : v.entityId,
+							'operationType' : v.operationType, 
+							'changerUserName' : v.changerUserName,
+							'changerUserId' : v.changerUserId, 
+							'changerAccountName' : v.changerAccountName,
+							'changerAccountId' : v.changerAccountId,
+							'performedBy' : utils.format('{0} ({1}) | {2} ({3})', v.changerUserName, v.changerUserId, v.changerAccountName, v.changerAccountId),
+							'originJsonValue' : v
+						});
+					});
+				});				
 			}			
 
 			//testing only
-				self.authorization = '9fc57cfc-24ed-4ac3-b823-bc9fb215a7a1';
+				self.authorization = 'adb31a8f-f8e3-40de-b8e5-7f5e389d5d5e';
 				self.entityType = 'Ad';
-				self.entityID = '1074084109';
+				self.entityID = '1074133259';
 			//
 		}
 	]

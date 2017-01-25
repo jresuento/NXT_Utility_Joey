@@ -2,5 +2,6 @@
 
 angular.module('history', [
 	'ngResource',
-	'core.utils'
+	'core.utils',
+	'ngSanitize'
 ]);

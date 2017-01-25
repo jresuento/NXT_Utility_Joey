@@ -32,6 +32,24 @@ function() {
 				result.push(obj[i]);
 			}
 			return result;
+		},		
+		'paddingLeft' : function(a, b, c){
+			var d = '';
+			for(var e=0;e<c;e++) d += b;
+			return String(d + a).slice(-1 * c);
+		},
+		'formatToDate' : function(utils, time){
+			var d = new Date;
+			d.setTime(time);
+			return utils.format('{0}-{1}-{2} {3}:{4}:{5}.{6}', 
+				d.getFullYear(),
+				utils.paddingLeft(d.getMonth() + 1, '0', 2),
+				utils.paddingLeft(d.getDate(), '0', 2),
+				utils.paddingLeft(d.getHours(), '0', 2),
+				utils.paddingLeft(d.getMinutes(), '0', 2),
+				utils.paddingLeft(d.getSeconds(), '0', 2),
+				d.getMilliseconds()
+			);
 		}
 	}
 }]);
