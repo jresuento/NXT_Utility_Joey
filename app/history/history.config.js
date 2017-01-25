@@ -42,8 +42,7 @@ component('historyView', {
 						self.property_change_table += '<div title=\'' + v.valueOld + '\' class=\'col-md-3\'>' + v.valueOld + '</div>';
 						self.property_change_table += '</div>';
 					} else {
-						angular.forEach(v.propertyChanges, function(vc) {
-							console.log('vc', vc);
+						angular.forEach(v.propertyChanges, function(vc) {							
 							self.property_change_table += '<div class=\'row\'>';
 							self.property_change_table += '<div title=\'' + vc.parentField + '\' class=\'col-md-3\'>' + vc.parentField + '</div>';
 							self.property_change_table += '<div title=\'' + vc.field + '\' class=\'col-md-3\'>' + vc.field + '</div>';
