@@ -41,7 +41,7 @@
 		<div class="col-md-1" title='{{history.entityId}}'>{{history.entityId}}</div>
 		<div class="col-md-2" title='{{history.operationType}}'>{{history.operationType}}</div>
 		<div class="col-md-4" title='{{history.performedBy}}'>{{history.performedBy}}</div>
-		<div class="col-md-1"><a class='history-details-button' ng-click='$ctrl.selectedHistoryID = history.id; $ctrl.showLogDetails()'>Details</a></div>
+		<div class="col-md-1"><a class='history-details-button detailsBtn_{{history.id}}' ng-click='$ctrl.selectedHistoryID = history.id; $ctrl.showLogDetails()'>Details</a></div>
 	</div>
 
 </div>

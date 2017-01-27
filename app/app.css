@@ -10,11 +10,8 @@ div.history-table-view {
 }
 
 div.history-table-view > div.row > div {
-	border: .5px solid black;
-}
-
-div.history-table-view div.row:first-child {
-	font-weight:bold;
+	/*border: .5px solid black;*/
+	padding: 5px;
 }
 
 div.history-modal{
@@ -83,15 +80,39 @@ div.property-change-table{
 }
 
 div.property-change-table div.row div{
-	border: .5px solid #3498DB;
 	height: 25px;
 	overflow: hidden;
 	white-space: nowrap;
+	padding: 5px;
 }
 
+div.property-change-table > div.row:nth-child(even), div.history-table-view > div.row:nth-child(even) {
+	background-color:#F2F4F4;
+}
+
+div.property-change-table > div.row:nth-child(odd), div.history-table-view > div.row:nth-child(odd) {
+	background-color:#D6EAF8;
+}
+
+
+div.property-change-table div.row:first-child, div.history-table-view div.row:first-child {
+	font-weight:bold;
+	background-color:#85C1E9;
+}
+
+div.property-change-table div.row:hover, div.history-table-view div.row:hover {
+	background-color:#D5F5E3;
+}
+
+div.property-change-table div.row:first-child:hover, div.history-table-view div.row:first-child:hover {
+	background-color:#85C1E9;
+}
 .property-change-table-row-header{
 	font-weight:bold;
 }
 
+div.rowselected{
+	background-color:#D5F5E3 !important;
+}
 
 

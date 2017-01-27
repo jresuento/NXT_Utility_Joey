@@ -15,6 +15,10 @@ component('historyView', {
 			self.selectedHistoryDetails = {};
 			self.entityHistoryResult = new Array;
 
+			//Testing
+			self.authorization = 'd90b4ca7-f1fa-48de-8f27-0eaf12cfc6df', self.entityType = 'Ad', self.entityID = '1074048485'
+			//endTesting
+
 			self.showLogDetails = function(){
 				angular.forEach(self.entityHistoryResult, function(value) {
 					if(value.id == self.selectedHistoryID) self.selectedHistoryDetails = value;
@@ -53,10 +57,12 @@ component('historyView', {
 					}
 
 				});
+				self.highlightSelectedRow();
 			}
 
 			self.hideLogDetails = function(){
-				self.isShowLogDetails = false	
+				self.isShowLogDetails = false;	
+				self.clearSelectedRowHighlight();
 			}
 
 			self.submit = function(){		
@@ -86,6 +92,18 @@ component('historyView', {
 						});
 					});
 				});				
+			}
+
+			self.highlightSelectedRow = function(id){
+				self.clearSelectedRowHighlight();
+				document.querySelector('.detailsBtn_' + self.selectedHistoryDetails.id).parentNode.parentNode.className += ' rowselected'
+			}
+
+			self.clearSelectedRowHighlight = function(){
+				var historyTableView = document.querySelector('.history-table-view'), historyTableViewDivs = historyTableView.getElementsByTagName('div');
+				for(var i = 0; i < historyTableViewDivs.length; i++){
+					(historyTableViewDivs[i].className.indexOf('rowselected') > -1) && (historyTableViewDivs[i].className = historyTableViewDivs[i].className.replace('rowselected', ''))
+				}
 			}
 		}
 	]
