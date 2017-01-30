@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 
 angular.
 module('history').
@@ -62,48 +62,74 @@ component('historyView', {
 			}
 
 			self.showLogDetails = function(){
+				var propertyChanges = new Array;
 				angular.forEach(self.entityHistoryResult, function(value) {
 					if(value.id == self.selectedHistoryID) self.selectedHistoryDetails = value;
 				});
 
 				self.isShowLogDetails = true;
 				self.property_change_table = '<div class=\'row property-change-table-row-header\'>';
-				self.property_change_table += '<div class=\'col-md-3\'>ParentField</div>';
-				self.property_change_table += '<div class=\'col-md-3\'>Field</div>';
+				self.property_change_table += '<div class=\'col-md-2\'>ParentField</div>';
+				self.property_change_table += '<div class=\'col-md-2\'>Field</div>';
+				self.property_change_table += '<div class=\'col-md-2\'>ContainerID</div>';
 				self.property_change_table += '<div class=\'col-md-3\'>New Value</div>';
 				self.property_change_table += '<div class=\'col-md-3\'>Old Value</div>';
 				self.property_change_table += '</div>';
+
+				function getAllPropertyChanges(a, b){
+					var d, e = arguments;
+					b.push({
+						'parentField' : a.parentField,
+						'field' : a.field,
+						'containerId': a.containerId,
+						'valueNew' : typeof a.valueNew == 'undefined' ? '' : a.valueNew,
+						'valueOld' : typeof a.valueOld == 'undefined' ? '' : a.valueOld
+					});
+					d = typeof a.propertyChanges == 'object' ? a.propertyChanges : typeof a.objectPropertyChangeList == 'object' ? a.objectPropertyChangeList : null					
+					!!d && angular.forEach(d, function(c) {
+						switch(c.type){
+							case 'CollectionItemPropertyChange':
+							case 'ObjectPropertyChange':
+							case 'CollectionPropertyChange':
+								e.callee(c, b);
+								break;
+							case 'TerminalPropertyChange':
+								b.push({
+									'parentField' : c.parentField,
+									'field' : c.field,
+									'containerId': c.containerId,
+									'valueNew' : c.valueNew,
+									'valueOld' : c.valueOld
+								});
+								break;
+							default:
+								window.alert('Property unhandled. Property name: ' + c.type)
+						}
+					});
+				}
 
 				if(typeof self.selectedHistoryDetails.originJsonValue.propertyChange === 'undefined'){
 					self.property_change_table += '<div class=\'row\'>';
 					self.property_change_table += '<div class=\'col-md-12\'>No property changes to show.</div>';
 					self.property_change_table += '</div>';
 				} else angular.forEach(self.selectedHistoryDetails.originJsonValue.propertyChange.propertyChanges, function(v) {
-					
-					if(typeof v.propertyChanges != 'object'){
+					propertyChanges = new Array;
+					getAllPropertyChanges(v, propertyChanges);
+					angular.forEach(propertyChanges, function(v2) {							
 						self.property_change_table += '<div class=\'row\'>';
-						self.property_change_table += '<div title=\'' + v.parentField + '\' class=\'col-md-3\'>' + v.parentField + '</div>';
-						self.property_change_table += '<div title=\'' + v.field + '\' class=\'col-md-3\'>' + v.field + '</div>';
-						self.property_change_table += '<div title=\'' + v.valueNew + '\' class=\'col-md-3\'>' + v.valueNew + '</div>';
-						self.property_change_table += '<div title=\'' + v.valueOld + '\' class=\'col-md-3\'>' + v.valueOld + '</div>';
+						self.property_change_table += '<div title=\'' + v2.parentField + '\' class=\'col-md-2\'>' + v2.parentField + '</div>';
+						self.property_change_table += '<div title=\'' + v2.field + '\' class=\'col-md-2\'>' + v2.field + '</div>';
+						self.property_change_table += '<div title=\'' + v2.containerId + '\' class=\'col-md-2\'>' + v2.containerId + '</div>';
+						self.property_change_table += '<div title=\'' + v2.valueNew + '\' class=\'col-md-3\'>' + v2.valueNew + '</div>';
+						self.property_change_table += '<div title=\'' + v2.valueOld + '\' class=\'col-md-3\'>' + v2.valueOld + '</div>';
 						self.property_change_table += '</div>';
-					} else {
-						angular.forEach(v.propertyChanges, function(vc) {							
-							self.property_change_table += '<div class=\'row\'>';
-							self.property_change_table += '<div title=\'' + vc.parentField + '\' class=\'col-md-3\'>' + vc.parentField + '</div>';
-							self.property_change_table += '<div title=\'' + vc.field + '\' class=\'col-md-3\'>' + vc.field + '</div>';
-							self.property_change_table += '<div title=\'' + vc.valueNew + '\' class=\'col-md-3\'>' + vc.valueNew + '</div>';
-							self.property_change_table += '<div title=\'' + vc.valueOld + '\' class=\'col-md-3\'>' + vc.valueOld + '</div>';
-							self.property_change_table += '</div>';
-						});
-					}
-
-				});
+					});
+				});			
 				self.highlightSelectedRow();
 			}
 
 			//Testing
-			self.authorization = 'd90b4ca7-f1fa-48de-8f27-0eaf12cfc6df', self.entityType = 'Ad', self.entityID = '1074048485'
+			self.authorization = 'b9668a79-88fd-45bf-ab3f-bd4ceb1d5c85', self.entityType = 'DeliveryGroup', self.entityID = '1073821000'
 			//endTesting		
 		}
 	]
