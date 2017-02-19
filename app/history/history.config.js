@@ -44,7 +44,7 @@ component('historyView', {
 				this.statusMsg = msg;
 
 				setTimeout(function(){ 
-					self.hasError = !1, self.hasMsg = !1; //not working
+					self.hasError = !1, self.hasMsg = !1; //buggy
 					//console.log('self', self)
 				}, 3000);
 			}
