@@ -1,6 +1,13 @@
+<div class='statusText' ng-class="{statusTextLoading: $ctrl.hasMsg, statusTextShow: $ctrl.hasError || $ctrl.hasMsg, statusTextError: $ctrl.hasError}">
+	<span ng-bind="$ctrl.statusMsg"></span>
+</div>
+
 <h4>Enter your MDX NXT Username/Password to generate SessionID or enter a SessionID</h4>
+
+<br />
+
 <div class='history-form-view'>
-	<form class='form-horizontal' ng-submit='$ctrl.submit()''>
+	<form class='form-horizontal' ng-submit='$ctrl.login()''>
 		<div class='form-group'>
 			<label for='username'  class='col-sm-1 control-label'>Username</label>
 			<div class='col-sm-3'>
@@ -14,9 +21,18 @@
 			</div>
 		</div>
 		<div class='form-group'>
+			<div class='col-sm-offset-1 col-sm-3'>
+				<button type='submit' class='btn btn-default'>Submit</button>
+			 </div>
+		</div>
+	</form>
+	<br />
+	<br />
+	<form class='form-horizontal' ng-submit='$ctrl.addSessionID()''>
+		<div class='form-group'>
 			<label for='sessionId' class='col-sm-1 control-label'>SessionID</label>
 			<div class='col-sm-3'>
-				<input type='text' class='form-control' id='sessionId' disabled placeholder='SessionID' ng-model='$ctrl.sessionId'>
+				<input type='text' class='form-control' id='sessionId' placeholder='SessionID' ng-model='$ctrl.sessionId'>
 			</div>
 		</div>
 		<div class='form-group'>

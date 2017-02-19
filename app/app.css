@@ -1,9 +1,5 @@
 /* */
 
-/* home */
-
-/* history */
-
 div.pageheader-top{
 	height:50px;
 }
@@ -14,115 +10,21 @@ div.pageheader{
 	border-bottom: 1px solid #D6EAF8;
 }
 
-div.history-table-view {
-	margin:20px;
-	font-size:12px;
+div.statusText{
+	text-align:center;
+	visibility: hidden;
 }
 
-div.history-table-view > div.row > div {
-	/*border: .5px solid black;*/
-	padding: 5px;
+div.statusTextShow{
+	visibility:visible;
 }
 
-div.history-modal{
-	position:absolute;
-	z-index:2;
-	height:400px;
-	width:1000px;
-	top:50%;
-	left:50%;
-	margin-left:-500px;
-	margin-top:-200px;
-	border:1px solid #3498DB;
-	background-color:#fff;
-	overflow:none;
-	font-size:12px;
+div.statusTextError{
+	color:red;
+	background-color:antiquewhite;
 }
 
-div.history-modal-dimmer{
-	position:absolute;
-	z-index:1;
-	height:100%;
-	width:100%;
-	top:0;
-	left:0;
-	background-color:grey;
-	opacity:.5;	
-}
-
-a.history-details-button {
-	cursor:pointer;
-}
-
-div.history-modal{
-	border-radius: 4px;
-	font-family: Tahoma, Arial;
-	font-weight: 12px;
-}
-
-div.history-modal-header {	
-	font-size: 17px;
-	font-weight: bold;
-	background-color: #3498DB;
-	padding: 5px;
-	color: #fff;
-}
-
-div.history-modal div.row {
-	margin: 0;
-	padding:0;
-}
-
-div.history-modal-close{
-	text-align: right;
-}
-
-div.history-modal-close:hover{
-	cursor:pointer;
-	color:#999;
-}
-
-div.property-change-table{
-	/*margin-top: 10px;*/
-	padding: 20px 15px;
-	overflow-y: scroll;
-	height: 300px;
-}
-
-div.property-change-table div.row div{
-	height: 25px;
-	overflow: hidden;
-	white-space: nowrap;
-	padding: 5px;
-}
-
-div.property-change-table > div.row:nth-child(even), div.history-table-view > div.row:nth-child(even) {
-	background-color:#F2F4F4;
-}
-
-div.property-change-table > div.row:nth-child(odd), div.history-table-view > div.row:nth-child(odd) {
+div.statusTextLoading{
+	color:green;
 	background-color:#D6EAF8;
 }
-
-
-div.property-change-table div.row:first-child, div.history-table-view div.row:first-child {
-	font-weight:bold;
-	background-color:#85C1E9;
-}
-
-div.property-change-table div.row:hover, div.history-table-view div.row:hover {
-	background-color:#D5F5E3;
-}
-
-div.property-change-table div.row:first-child:hover, div.history-table-view div.row:first-child:hover {
-	background-color:#85C1E9;
-}
-.property-change-table-row-header{
-	font-weight:bold;
-}
-
-div.rowselected{
-	background-color:#D5F5E3 !important;
-}
-
-

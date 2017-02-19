@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('home', [
-	'ngCookies',
 	'core.utils',
-	'core.rest'
+	'core.rest',
+	'core.cookies'
 ]);

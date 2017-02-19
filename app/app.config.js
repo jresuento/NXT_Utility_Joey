@@ -13,5 +13,7 @@ function config($locationProvider, $routeProvider) {
 		template: '<history-view></history-view>'
 	}).        
 	otherwise('/home');
+
+	// Cookies.$cookies.putObject('sessionId', '1x1x');
 }
 ]);

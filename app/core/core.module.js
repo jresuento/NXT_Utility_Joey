@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('core', ['core.utils', 'core.rest']);
+angular.module('core', ['core.utils', 'core.rest', 'core.cookies']);
