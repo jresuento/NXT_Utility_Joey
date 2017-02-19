@@ -3,4 +3,5 @@
 Refactoring.
 
 npm install
+
 bower install
