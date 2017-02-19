@@ -33,7 +33,7 @@ component('homeView', {
 			}
 
 			self.addSessionID = function(){
-				Cookies.$cookies.putObject('sessionId', self.sessionId), self.showMsg(self.statusMessages['CookieSaved']);
+				Cookies.$cookies.putObject('sessionId', self.sessionId), self.showMsg(self.statusMessages.CookieSaved);
 			}
 
 			self.showMsg = function(msg, iserr){			
