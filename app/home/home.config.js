@@ -41,7 +41,7 @@ component('homeView', {
 				this.statusMsg = msg;
 
 				setTimeout(function(){ 
-					self.hasError = !1, self.hasMsg = !1; //buggy, only works if you interact in the page
+					self.hasError = !1, self.hasMsg = !1; //only works if you interact in the page
 				}, 3000);
 			}
 	}]
