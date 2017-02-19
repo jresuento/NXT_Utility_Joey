@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('history', [
-	'ngResource',
 	'core.utils',
+	'core.rest',
 	'ngSanitize',
 	'ngCookies'
 ]);
