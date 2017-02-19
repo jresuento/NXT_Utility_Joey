@@ -14,7 +14,7 @@ component('historyView', {
 			then(res => {
 				self.statusMessages = res.messages
 			})
-			self.authorization = Cookies.getSSID();
+			Rest.authorization = self.authorization = Cookies.getSSID();
 			self.hasError = !1;
 			self.hasMsg = !1;
 
@@ -25,7 +25,7 @@ component('historyView', {
 					return;
 				}
 
-				Rest.getHistory.start({
+				Rest.getHistory().start({
 					'entityID': self.entityID,
 					'entityType': self.entityType
 				}).$promise
