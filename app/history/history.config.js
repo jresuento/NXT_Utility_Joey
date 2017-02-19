@@ -20,7 +20,7 @@ component('historyView', {
 
 			self.submit = function(){
 
-				if(typeof self.authorization == 'undefined' || typeof self.entityType == 'undefined' || typeof self.entityID == 'undefined'){
+				if(!self.authorization|| !self.entityType || !self.entityID){
 					self.showMsg(self.statusMessages.MissingFields, !0)
 					return;
 				}

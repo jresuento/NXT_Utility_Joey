@@ -11,11 +11,11 @@ function($resource){
 					isArray: false
 				}					
 			})
-			this.getHistory = $resource('https://mdx.sizmek.com/rest/history/entityhistory?id=:entityID&type=:entityType&sort=changedDate&order=desc', {}, {
+			this.getHistory = $resource('https://api.sizmek.com/rest/history/entityhistory?id=:entityID&type=:entityType&sort=changedDate&order=desc', {}, {
 				start : {
 					'method' : 'GET',
 					'headers' : {
-						'Authorization' : self.authorization
+						'Authorization' : ''
 					},
 					isArray: false
 				}					

@@ -8,16 +8,17 @@ component('homeView', {
 		function HomeController(Utils, Rest, Cookies) {
 
 			var self = this;
-			self.sessionId = Cookies.getSSID();
+			self.sessionId = Cookies.getSSID();			
+			self.hasError = !1;
+			self.hasMsg = !1;
+
 			Rest.getStatusMessages.get().$promise.
 			then(res => {
 				self.statusMessages = res.messages
 			})
-			self.hasError = !1;
-			self.hasMsg = !1;
 
 			self.login = function(){
-				if(typeof self.username == 'undefined' || typeof self.password == 'undefined'){
+				if(!self.username || !self.password){
 					self.showMsg(self.statusMessages.IncorrectCredentials, !0)
 					return;
 				}
