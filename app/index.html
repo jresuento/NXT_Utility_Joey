@@ -21,6 +21,7 @@
 	<script src='bower_components/angular-route/angular-route.js'></script>
 	<script src="bower_components/angular-resource/angular-resource.js"></script>
 	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 	<script src="app.module.js"></script>
 	<script src="app.config.js"></script>
 	<script src="core/core.module.js"></script>
@@ -36,6 +37,14 @@
 <body>
 
 <div class='container-fluid'>
+	
+	<div class='pageheader-top'>
+		<div class="row pageheader">
+			<div class="col-md-1"><a href='#!/home'>Home</a></div>
+	  		<div class="col-md-1"><a href='#!/history'>History</a></div> 
+		</div>
+	</div>
+
 	<div ng-view></div>
 </div>
 

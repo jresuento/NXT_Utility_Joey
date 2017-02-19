@@ -1,11 +1,11 @@
-//'use strict';
+'use strict';
 
 angular.
 module('history').
 component('historyView', {
 	templateUrl: 'history/history.template.html',
-	controller: ['$resource', 'Utils',
-		function HistoryController($resource, utils) {
+	controller: ['$rootScope', '$resource', '$cookies', 'Utils',
+		function HistoryController($rootScope, $resource, $cookies, utils) {
 
 			var self = this;
 			self.utils = utils;
@@ -13,7 +13,9 @@ component('historyView', {
 			self.isShowLogDetails = false;
 			self.selectedHistoryID = null;
 			self.selectedHistoryDetails = {};
-			self.entityHistoryResult = new Array;				
+			self.entityHistoryResult = new Array;	
+
+			self.authorization = (typeof $rootScope.sessionId != 'undefined') ? $rootScope.sessionId : ((typeof $cookies.getObject('sessionId') != 'undefined') ? $cookies.getObject('sessionId') : '');
 
 			self.hideLogDetails = function(){
 				self.isShowLogDetails = false;	
@@ -128,8 +130,9 @@ component('historyView', {
 				self.highlightSelectedRow();
 			}
 
+			//console.log('typeof $rootScope.sessionId', typeof $rootScope.sessionId)
 			//Testing
-			self.authorization = 'b9668a79-88fd-45bf-ab3f-bd4ceb1d5c85', self.entityType = 'DeliveryGroup', self.entityID = '1073821000'
+			//self.authorization = '8ab713cf-07cb-4f1a-900f-c540b421cc57', self.entityType = 'DeliveryGroup', self.entityID = '1073821000'
 			//endTesting		
 		}
 	]

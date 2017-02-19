@@ -1,3 +1,7 @@
 'use strict';
 
-angular.module('home', []);
+angular.module('home', [
+	'ngResource',
+	'ngCookies',
+	'core.utils'	
+]);

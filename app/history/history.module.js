@@ -3,5 +3,6 @@
 angular.module('history', [
 	'ngResource',
 	'core.utils',
-	'ngSanitize'
+	'ngSanitize',
+	'ngCookies'
 ]);

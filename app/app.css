@@ -4,6 +4,16 @@
 
 /* history */
 
+div.pageheader-top{
+	height:50px;
+}
+
+div.pageheader{
+	height:40px;
+	padding:10px;
+	border-bottom: 1px solid #D6EAF8;
+}
+
 div.history-table-view {
 	margin:20px;
 	font-size:12px;
