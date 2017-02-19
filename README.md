@@ -1,6 +1,8 @@
 # NXT_Utility_Joey
 
-Refactoring.
+Refactoring...
+
+To run on local - 
 
 npm install
 

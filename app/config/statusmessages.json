@@ -1,9 +1,9 @@
 {
 	"messages" : {		
 		"Unauthorized" : "It looks like your Token has already expired or does not have permission to perform this action. Please check if the token you are using is not assigned to a specific Account.",
-		"IncorrectCredentials" : "Please check if credentials you entered are correct",
+		"IncorrectCredentials" : "Please check if credentials you entered are correct.",
 		"CookieSaved" : "Your sessionId has been saved in your browser cookies.",
-		"RequestSSID" : "Requesting Session ID",
-		"MissingFields" : "Some fields do not have values"
+		"RequestSSID" : "Requesting Session ID.",
+		"MissingFields" : "Some fields do not have values."
 	}
 }

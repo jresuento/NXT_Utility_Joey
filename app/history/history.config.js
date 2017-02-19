@@ -20,7 +20,7 @@ component('historyView', {
 
 			self.submit = function(){
 
-				if(typeof self.authorization == 'undefined' || typeof self.entitytype == 'undefined' || typeof self.entityID == 'undefined'){
+				if(typeof self.authorization == 'undefined' || typeof self.entityType == 'undefined' || typeof self.entityID == 'undefined'){
 					self.showMsg(self.statusMessages.MissingFields, !0)
 					return;
 				}
@@ -30,11 +30,10 @@ component('historyView', {
 					'entityType': self.entityType
 				}).$promise
 				.then(res => {
-					console.log('result', res)
+					//console.log('result', res)
 				 	//log parser
 				})
 				.catch(err => {		
-					console.log('error:', err)			
 					self.showMsg(err.status == 401 ? self.statusMessages.Unauthorized : JSON.stringify(err.data), !0)
 				});
 			}
