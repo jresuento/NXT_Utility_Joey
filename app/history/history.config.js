@@ -19,6 +19,12 @@ component('historyView', {
 			self.hasMsg = !1;
 
 			self.submit = function(){
+
+				if(typeof self.authorization == 'undefined' || typeof self.entitytype == 'undefined' || typeof self.entityID == 'undefined'){
+					self.showMsg(self.statusMessages.MissingFields, !0)
+					return;
+				}
+
 				Rest.getHistory.start({
 					'entityID': self.entityID,
 					'entityType': self.entityType
