@@ -4,14 +4,17 @@ angular.
 module('history').
 component('historyView', {
 	templateUrl: 'history/history.template.html',
-	controller: ['Utils', 'Rest', 'Cookies', 
-		function HistoryController(Utils, Rest, Cookies) {
+	controller: ['Utils', 'Rest', 'Cookies', 'LogParser', 
+		function HistoryController(Utils, Rest, Cookies, LogParser) {
 
 			var self = this;
 
-			self.entityConfig = Rest.getEntityConfig.get();
-			Rest.getStatusMessages.get().$promise.
-			then(res => {
+			Rest.getEntityConfig.get().$promise
+			.then(res => {
+				self.entityConfig = res
+			})
+			Rest.getStatusMessages.get().$promise
+			.then(res => {
 				self.statusMessages = res.messages
 			})
 			Rest.authorization = self.authorization = Cookies.getSSID();
@@ -30,8 +33,7 @@ component('historyView', {
 					'entityType': self.entityType
 				}).$promise
 				.then(res => {
-					//console.log('result', res)
-				 	//log parser
+					
 				})
 				.catch(err => {		
 					self.showMsg(err.status == 401 ? self.statusMessages.Unauthorized : JSON.stringify(err.data), !0)
@@ -43,10 +45,12 @@ component('historyView', {
 				this.statusMsg = msg;
 
 				setTimeout(function(){ 
-					self.hasError = !1, self.hasMsg = !1; 
-					//console.log('self', self)
+					self.hasError = !1, self.hasMsg = !1;
 				}, 3000);
 			}
+
+			//testonly
+			self.entityType = 'DeliveryGroup', self.entityID = '1073815164'
 		}
 	]
 });

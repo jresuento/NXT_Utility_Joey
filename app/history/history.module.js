@@ -3,5 +3,6 @@
 angular.module('history', [
 	'core.utils',
 	'core.rest',
-	'core.cookies'
+	'core.cookies',
+	'core.logparser'
 ]);
