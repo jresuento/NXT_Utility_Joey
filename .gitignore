@@ -3,6 +3,7 @@ logs/*
 node_modules/
 app_seed/
 bower_components/
+tmp/
 tmp
 .DS_Store
 .idea
