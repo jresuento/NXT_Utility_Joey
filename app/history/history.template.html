@@ -30,4 +30,25 @@
 	</form>
 </div>
 
+<div class='history-table-view' ng-class="{historyTableViewShow: $ctrl.entityHistory}">
+	<div class='row'>
+		<div class="col-md-1">ID</div>
+		<div class="col-md-2">DateTime</div>
+		<div class="col-md-3">EntityType</div>
+		<div class="col-md-1">EntityID</div>
+		<div class="col-md-1">Action</div>
+		<div class="col-md-3">Performed By</div>
+		<div class="col-md-1">More</div>
+	</div>
+	<div class="row" ng-repeat="log in $ctrl.entityHistory">
+		<div class="col-md-1" title='{{log.id}}'>{{log.id}}</div>
+		<div class="col-md-2" title='{{log.DateTime}}'>{{log.DateTime}}</div>
+		<div class="col-md-3" title='{{log.typeOfEntity}}'>{{log.typeOfEntity}}</div>
+		<div class="col-md-1" title='{{log.entityId}}'>{{log.entityId}}</div>
+		<div class="col-md-1" title='{{log.operationType}}'>{{log.operationType}}</div>
+		<div class="col-md-3" title='{{log.performedBy}}'>{{log.performedBy}}</div>
+		<div class="col-md-1">Details</div>
+	</div>
+
+</div>
 

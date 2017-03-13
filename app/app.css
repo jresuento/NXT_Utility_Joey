@@ -28,3 +28,32 @@ div.statusTextLoading{
 	color:green;
 	background-color:#D6EAF8;
 }
+
+div.history-table-view{
+	display: none;
+	margin:20px;
+	font-size:12px;
+}
+
+div.historyTableViewShow{
+	display: block;
+}
+
+div.history-table-view > div.row > div {
+	padding: 5px;
+}
+
+div.history-table-view > div.row:nth-child(even) {
+	background-color:#F2F4F4;
+}
+
+div.history-table-view > div.row:nth-child(odd) {
+	background-color:#D6EAF8;
+}
+
+div.history-table-view div.row:first-child {
+	font-weight:bold;
+	background-color:#85C1E9;
+}
+
+

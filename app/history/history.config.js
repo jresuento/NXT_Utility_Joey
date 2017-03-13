@@ -8,6 +8,7 @@ component('historyView', {
 		function HistoryController(Utils, Rest, Cookies, LogParser) {
 
 			var self = this;
+			self.entityHistory = null;
 
 			Rest.getEntityConfig.get().$promise
 			.then(res => {
@@ -27,13 +28,13 @@ component('historyView', {
 					self.showMsg(self.statusMessages.MissingFields, !0)
 					return;
 				}
-
+				self.entityHistory = null;
 				Rest.getHistory().start({
 					'entityID': self.entityID,
 					'entityType': self.entityType
 				}).$promise
 				.then(res => {
-					
+					LogParser.constructEntityHistory(res), console.log('LogParser.entityHistory', LogParser.entityHistory), self.entityHistory = LogParser.entityHistory;
 				})
 				.catch(err => {		
 					self.showMsg(err.status == 401 ? self.statusMessages.Unauthorized : JSON.stringify(err.data), !0)
@@ -51,6 +52,7 @@ component('historyView', {
 
 			//testonly
 			self.entityType = 'DeliveryGroup', self.entityID = '1073815164'
+			//self.entityType = 'Ad', self.entityID = '1074164486'
 		}
 	]
 });
