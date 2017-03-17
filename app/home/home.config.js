@@ -8,7 +8,10 @@ component('homeView', {
 		function HomeController(Utils, Rest, Cookies) {
 
 			var self = this;
-			self.sessionId = Cookies.getSSID();			
+			self.sessionId = Cookies.getSSID();		
+			self.username = Cookies.getUserName();
+			self.password = Cookies.getPassword();
+			self.rememberme = Cookies.shouldRemember();
 			self.hasError = !1;
 			self.hasMsg = !1;
 
@@ -26,10 +29,16 @@ component('homeView', {
 				Rest.login.start({}, Utils.format('{username:"{0}", password: "{1}"}', self.username, self.password)).$promise.
 				then(res => {
 					self.hasError = !1, self.hasMsg = !1;
-					Cookies.$cookies.putObject('sessionId', self.sessionId = res.result.sessionId);
+					Cookies.$cookies.putObject('sessionId', self.sessionId = res.result.sessionId)
+					Cookies.$cookies.putObject('remember', self.rememberme ? 'yes' : 'no')
+					Cookies.$cookies.putObject('username', self.rememberme ? self.username : '')
+					Cookies.$cookies.putObject('password', self.rememberme ? self.password : '')
 				}).
 				catch(err => {
 					self.showMsg(err.status == 401 ? self.statusMessages.IncorrectCredentials : JSON.stringify(err.data), !0)
+					Cookies.$cookies.putObject('remember', 'no')
+					Cookies.$cookies.putObject('username', '')
+					Cookies.$cookies.putObject('password', '')
 				});
 			}
 

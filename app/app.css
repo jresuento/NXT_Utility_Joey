@@ -1,4 +1,8 @@
-/* */
+/*  General */
+
+body{
+	font: 14px Arial;
+}
 
 div.pageheader-top{
 	height:50px;
@@ -28,6 +32,23 @@ div.statusTextLoading{
 	color:green;
 	background-color:#D6EAF8;
 }
+
+/* Home */
+
+div.rememberme > div{
+	font: 12px Arial;
+	height: 25px;
+}
+
+div.remembermeCheckBox{
+	text-align: right;
+}
+
+div.remembermeTxt{
+	padding: 4px 0 0 4px;
+}
+
+/* History */
 
 div.history-table-view{
 	display: none;
