@@ -62,6 +62,7 @@ div.historyTableViewShow{
 
 div.history-table-view > div.row > div {
 	padding: 5px;
+	overflow: hidden;
 }
 
 div.history-table-view > div.row:nth-child(even) {
@@ -72,9 +73,17 @@ div.history-table-view > div.row:nth-child(odd) {
 	background-color:#D6EAF8;
 }
 
-div.history-table-view div.row:first-child {
+div.history-table-view > div.row:hover {
+	background-color:#D5F5E3;
+}
+
+div.history-table-view div.row:first-child,  div.history-table-view div.row:first-child:hover{
 	font-weight:bold;
 	background-color:#85C1E9;
+}
+
+.history-table-view-detailsbutton{
+	cursor: pointer;
 }
 
 

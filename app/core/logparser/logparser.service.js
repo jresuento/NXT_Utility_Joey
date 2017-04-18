@@ -6,7 +6,8 @@ function(Utils) {
 	class LogParser{
 		constructor(){
 			this.entityHistory = null
-			this.logCount = null;
+			this.logCount = null
+			this.propertyChangeTypes = new Array('TerminalPropertyChange','ObjectPropertyChange','CollectionPropertyChange','CollectionItemPropertyChange')
 		}
 		constructEntityHistory(res){
 			this.logCount = 0;
@@ -43,8 +44,9 @@ function(Utils) {
 			}
 
 			if(log.type == 'EntityChange'){
-				propertyChange = propertyChange || log.propertyChange
-				if(propertyChange.type == 'ObjectPropertyChange' || propertyChange.type == 'CollectionPropertyChange' || propertyChange.type == 'CollectionItemPropertyChange'){					
+				propertyChange = propertyChange || log.propertyChange		
+				if(this.propertyChangeTypes.find((b) => b == propertyChange.type && propertyChange.type != 'TerminalPropertyChange')){
+
 					let propertyChanges = propertyChange.propertyChanges || propertyChange.objectPropertyChangeList
 					for(let i in propertyChanges){
 						let a = propertyChanges[i];

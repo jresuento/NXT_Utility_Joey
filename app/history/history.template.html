@@ -47,7 +47,9 @@
 		<div class="col-md-1" title='{{log.entityId}}'>{{log.entityId}}</div>
 		<div class="col-md-1" title='{{log.operationType}}'>{{log.operationType}}</div>
 		<div class="col-md-3" title='{{log.performedBy}}'>{{log.performedBy}}</div>
-		<div class="col-md-1">Details</div>
+		<div class="col-md-1">
+			<a class='history-table-view-detailsbutton' ng-click='$ctrl.showLogDetails(log)'>Details</a>
+		</div>
 	</div>
 
 </div>

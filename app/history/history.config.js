@@ -34,7 +34,10 @@ component('historyView', {
 					'entityType': self.entityType
 				}).$promise
 				.then(res => {
-					LogParser.constructEntityHistory(res), console.log('LogParser.entityHistory', LogParser.entityHistory), self.entityHistory = LogParser.entityHistory;
+					LogParser.constructEntityHistory(res), 
+					console.log('res', res), 
+					console.log('LogParser.entityHistory', LogParser.entityHistory),
+					self.entityHistory = LogParser.entityHistory;
 				})
 				.catch(err => {		
 					self.showMsg(err.status == 401 ? self.statusMessages.Unauthorized : JSON.stringify(err.data), !0)
@@ -50,9 +53,13 @@ component('historyView', {
 				}, 3000);
 			}
 
+			self.showLogDetails = function(log){
+				console.warn('showLogDetails', log)
+			}
+
 			//testonly
-			self.entityType = 'DeliveryGroup', self.entityID = '1073815164'
-			//self.entityType = 'Ad', self.entityID = '1074164486'
+			//self.entityType = 'DeliveryGroup', self.entityID = '1073815164'
+			self.entityType = 'Ad', self.entityID = '1074164486'
 		}
 	]
 });
