@@ -8,7 +8,8 @@ component('historyView', {
 		function HistoryController(Utils, Rest, Cookies, LogParser) {
 
 			var self = this;
-			self.entityHistory = null;
+			self.entityHistory = null,
+			self.showLogDetailsObj = null
 
 			Rest.getEntityConfig.get().$promise
 			.then(res => {
@@ -55,11 +56,16 @@ component('historyView', {
 
 			self.showLogDetails = function(log){
 				console.warn('showLogDetails', log)
+				self.showLogDetailsObj = log;
+			}
+
+			self.hideLogDetails = function(){
+				self.showLogDetailsObj = null;		
 			}
 
 			//testonly
-			//self.entityType = 'DeliveryGroup', self.entityID = '1073815164'
-			self.entityType = 'Ad', self.entityID = '1074164486'
+			self.entityType = 'DeliveryGroup', self.entityID = '1073815164'
+			//self.entityType = 'Ad', self.entityID = '1074164486'
 		}
 	]
 });

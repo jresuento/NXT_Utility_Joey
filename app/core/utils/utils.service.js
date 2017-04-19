@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('core.utils').
-factory('Utils', [
-function() {
+factory('Utils', ['$window', '$document', 
+function($window, $document) {
 	class Utils{
+		constructor(){
+			var self = this;
+			self.win = $window, self.document = $document[0]
+		}
 		format(){
 			var str, args;
 			(typeof arguments[0] == 'object') ? (str = arguments[0][0], args = arguments[0]) : (str = arguments[0], args = arguments);	

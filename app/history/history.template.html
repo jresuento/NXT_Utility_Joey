@@ -51,6 +51,20 @@
 			<a class='history-table-view-detailsbutton' ng-click='$ctrl.showLogDetails(log)'>Details</a>
 		</div>
 	</div>
-
 </div>
+
+<div class='history-table-details' ng-class="{historyTableDetailsShow: $ctrl.showLogDetailsObj}">
+	<div class='history-table-details-header'>
+		<div class='row'>
+			<div class='col-md-11 history-table-details-header-label'>
+				<span ng-bind='$ctrl.showLogDetailsObj.operationType'></span>
+			</div>
+			<div class='col-md-1 history-table-details-close' ng-click='$ctrl.hideLogDetails()'>
+				[X]
+			</div>
+		</div>		
+	</div>
+</div>
+
+<div class='history-dimmer' ng-class="{historyDimmerShow: $ctrl.showLogDetailsObj}"></div>
 
