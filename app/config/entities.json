@@ -2,6 +2,7 @@
 	"EntityTypes" : [
 		"Account",
 		"Ad",
+		"Asset",
 		"AdEvent",
 		"Advertiser",
 		"Brand",
@@ -14,6 +15,7 @@
 		"Strategy",
 		"StrategyV2",
 		"TargetAudience",
-		"User"
+		"User",
+		"Asset"
 	]
 }
