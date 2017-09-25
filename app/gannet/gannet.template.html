@@ -1,0 +1,28 @@
+<div class='statusText' ng-class="{statusTextLoading: $ctrl.hasMsg, statusTextShow: $ctrl.hasError || $ctrl.hasMsg, statusTextError: $ctrl.hasError}">
+	<span ng-bind="$ctrl.statusMsg"></span>
+</div>
+
+<div class='gannet-view'>
+	<h4>Update Pushdown Custom script #180719</h4>
+	<form ng-submit='$ctrl.submit()''>
+		<div class='row'>			
+		</div>
+		<div class='row'>
+			<div class="col-md-5">
+				<textarea id='adIDs' placeholder='Enter AdID(s) separated in comma. If an Ad is a MasterAd, ad copies will be updated'  ng-model='$ctrl.adIDs'>
+				</textarea>
+			</div>
+		</div>
+		<div class='row'>
+			<div class="col-md-5">
+				<textarea id='targetCS' placeholder='Enter custom script'  ng-model='$ctrl.targetCS'>
+				</textarea>
+			</div>
+		</div>
+		<div class='row'>
+			<div class="col-md-5">
+				<button type='submit' class='btn btn-default'>Update Ads</button>
+			</div>
+		</div>
+	</form>
+</div>

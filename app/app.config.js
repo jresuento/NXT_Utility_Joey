@@ -12,6 +12,9 @@ function config($locationProvider, $routeProvider) {
 	when('/history', {
 		template: '<history-view></history-view>'
 	}).        
+	when('/gannet', {
+		template: '<gannet-view></gannet-view>'
+	}).
 	otherwise('/home');
 }
 ]);

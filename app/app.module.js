@@ -4,5 +4,6 @@ angular.module('JoeyNXTUtil', [
 	'ngRoute',
 	'core',
 	'home',
-	'history'
+	'history',
+	'gannet'
 ]);

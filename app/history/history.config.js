@@ -45,7 +45,7 @@ component('historyView', {
 				});
 			}
 
-			self.showMsg = function(msg, iserr){			
+			self.showMsg = function(msg, iserr){
 				!!iserr && (self.hasMsg = !1, self.hasError = !0) || (self.hasError = !1, self.hasMsg = !0)
 				this.statusMsg = msg;
 
@@ -64,7 +64,9 @@ component('historyView', {
 			}
 
 			//testonly
-			self.entityType = 'DeliveryGroup', self.entityID = '1073815164'
+			//self.entityType = 'DeliveryGroup', 
+			//self.entityID = '1073815164', 
+			//self.authorization = 'c6e8a9cf-eb77-4ed2-bab7-cbb4d549b408'
 			//self.entityType = 'Ad', self.entityID = '1074164486'
 		}
 	]

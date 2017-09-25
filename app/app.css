@@ -148,3 +148,15 @@ div.history-dimmer{
 div.historyDimmerShow{
 	display : block;
 }
+
+/* Gannet */
+
+#adIDs{
+	height: 150px;
+	width: 600px;
+}
+
+#targetCS{
+	height: 50px;
+	width: 600px;	
+}

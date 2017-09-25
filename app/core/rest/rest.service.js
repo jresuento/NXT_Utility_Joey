@@ -27,6 +27,39 @@ function($resource){
 				}					
 			})			
 		}
+		getAd(){
+			return $resource('https://api.sizmek.com/rest/ads/:adID', {}, {
+				start : {
+					'method' : 'GET',
+					'headers' : {
+						'Authorization' : this.authorization
+					},
+					isArray: false
+				}					
+			})	
+		}
+		getPlacementAds(){
+			return $resource('https://api.sizmek.com/rest/ads?adId=:masterAdID&from=0&max=499&order=asc&sort=id', {}, {
+				start : {
+					'method' : 'GET',
+					'headers' : {
+						'Authorization' : this.authorization
+					},
+					isArray: false
+				}					
+			})
+		}
+		updateAd(){
+			return $resource('https://api.sizmek.com/rest/ads/:adID', {}, {
+				start : {
+					'method' : 'PUT',
+					'headers' : {
+						'Authorization' : this.authorization
+					},
+					isArray: false
+				}					
+			})
+		}
 	}
 	return new Rest
 }]);
