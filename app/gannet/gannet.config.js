@@ -53,6 +53,7 @@ component('gannetView', {
 
 			function updateAd(AdID){
 				self.adlogs.push(Utils.format('Processing AdID {0}', AdID));	
+				console.log('self.adlogs', self.adlogs)
 				var adResult;
 				return new Promise((resolve, reject) => {
 					if(!validateAd(AdID)){
@@ -87,7 +88,7 @@ component('gannetView', {
 								}, requestBodyStr).$promise
 							}
 						})
-						.then(res => {
+						/*.then(res => {
 							if(adResult.numberOfPlacementAds > 0){
 								//self.adQueueCopies = []; //we clear the ad copies queue here
 								self.adlogs.push('Ad has placementAds.. processing..');
@@ -101,8 +102,8 @@ component('gannetView', {
 									a();
 								})
 							}
-						}).
-						then(res => {
+						})
+						.then(res => {
 							if(res && res.result && res.result.length > 0){
 								for(let i=0;i<res.result.length;i++)
 									self.adQueueCopies.push(res.result[i].id)
@@ -110,6 +111,11 @@ component('gannetView', {
 								self.adlogs.push('Ad copies are pushed to queue')
 								resolve('Ad copies are pushed to queue')
 							}
+						})*/
+						.then(res => {
+							self.adlogs.push('Ad was updated successfully..')
+							self.adlogs.push(err)
+							resolve('Ad was updated successfully..')
 						})
 						.catch(err => {
 							self.adlogs.push('Ad was not updated successfully..')
