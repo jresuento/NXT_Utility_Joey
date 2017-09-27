@@ -114,7 +114,6 @@ component('gannetView', {
 						})*/
 						.then(res => {
 							self.adlogs.push('Ad was updated successfully..')
-							self.adlogs.push(err)
 							resolve('Ad was updated successfully..')
 						})
 						.catch(err => {
