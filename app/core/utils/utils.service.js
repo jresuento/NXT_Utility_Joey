@@ -40,7 +40,9 @@ function() {
 		},
 		'formatToDate' : function(utils, time){
 			var d = new Date;
-			d.setTime(time + (d.getTimezoneOffset() * 60000)); //offset the time here to UTC //we know the user TZ is returned in UTC
+			d.setTime(time + (d.getTimezoneOffset() * 60000)); 
+			//offset the time here to UTC 
+			//we know the user TZ is returned in UTC
 			return utils.format('{0}-{1}-{2} {3}:{4}:{5}.{6}', 
 				d.getFullYear(),
 				utils.paddingLeft(d.getMonth() + 1, '0', 2),
